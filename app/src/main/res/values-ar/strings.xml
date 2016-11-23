@@ -1,0 +1,25 @@
+
+<resources>
+    <string name="app_name">الأسهم هوك</string>
+    <string name="action_change_units">وحدات التغيير</string>
+    <string name="add_symbol">إضافة رمز</string>
+    <string name="input_hint">الأسهم رمز</string>
+    <string name="no_internet_connection">يتطلب هذا التطبيق اتصال بالإنترنت</string>
+    <string name="empty_view_no_connection_message">العثور على أي اتصال بالإنترنت. التحقق من اتصالك وحاول مرة أخرى</string>
+    <string name="input_pre_fill" />
+    <string name="stock_already_saved">يتم حفظ هذه الأسهم بالفعل!</string>
+    <string name="symbol_not_found">رمز السهم لا يتلقى وجود له!</string>
+    <string name="add_stock_quote">إضافة اقتباس الأسهم الجديدة</string>
+    <string name="stock_detail_title">الأوراق المالية</string>
+    <string name="stock_detail_tab1">5 أيام</string>
+    <string name="stock_detail_tab2">2 أسابيع</string>
+    <string name="stock_detail_tab3">1 شهر</string>
+    <string name="disagree">إلغاء</string>
+    <string name="add">إضافة</string>
+    <string name="offline">غير متصل</string>
+    <string name="try_again">حاول مرة أخرى</string>
+    <string name="widget_name">الأسهم هوك</string>
+    <string name="empty_view_no_stocks_title">يوجد مخزون</string>
+    <string name="empty_view_no_stocks_message">اضغط + لإضافة واحدة جديدة</string>
+
+</resources>

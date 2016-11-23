@@ -1,0 +1,24 @@
+
+<resources>
+    <string name="app_name">स्टॉक हॉक</string>
+    <string name="action_change_units">इकाइयों बदलें</string>
+    <string name="add_symbol">एक प्रतीक जोड़े</string>
+    <string name="input_hint">स्टॉक प्रतीक</string>
+    <string name="no_internet_connection">इस आवेदन के लिए एक इंटरनेट कनेक्शन की आवश्यकता है</string>
+    <string name="empty_view_no_connection_message">कोई इंटरनेट कनेक्शन नहीं!</string>
+    <string name="input_pre_fill" />
+    <string name="stock_already_saved">यह शेयर पहले से ही मौजूद है!</string>
+    <string name="symbol_not_found">स्टॉक प्रतीक मौजूद नहीं है!</string>
+    <string name="add_stock_quote">एक नया स्टॉक उद्धरण जोड़े</string>
+    <string name="stock_detail_title">स्टॉक</string>
+    <string name="stock_detail_tab1">5 दिन</string>
+    <string name="stock_detail_tab2">2 सप्ताह</string>
+    <string name="stock_detail_tab3">1 महीना</string>
+    <string name="disagree">वापस</string>
+    <string name="add">शेयर जोड़े</string>
+    <string name="offline">ऑफलाइन</string>
+    <string name="try_again">पुनः प्रयास करें</string>
+    <string name="widget_name">स्टॉक हॉक</string>
+    <string name="empty_view_no_stocks_title">कोई शेयर मौजूद नहीं</string>
+    <string name="empty_view_no_stocks_message">ठोकर + एक नया एक जोड़ने के लिए</string>
+</resources>
