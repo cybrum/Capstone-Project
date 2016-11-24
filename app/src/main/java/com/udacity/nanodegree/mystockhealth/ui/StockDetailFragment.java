@@ -73,6 +73,8 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
     private String mSymbol;
     private String mSelectedTab;
 
+    @Bind(R.id.newsBtn)
+    Button mNewsButton;
     @Bind(R.id.stock_symbol)
     TextView mSymbolView;
     @Bind(R.id.stock_bidprice)
@@ -118,6 +120,17 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.stock_detail, container, false);
         ButterKnife.bind(this, rootView);
+        mNewsButton = (Button) rootView.findViewById(R.id.newsBtn);
+        mNewsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String symbol = getActivity().getIntent().getExtras().getString("Symbol");
+                Intent i = new Intent(getActivity(), NewsActivity.class);
+                i.putExtra("Symbol", symbol);
+                Toast.makeText(getActivity().getApplicationContext(), (String) symbol, Toast.LENGTH_SHORT).show();
+                startActivity(i);
+            }
+        });
         setupTabs();
         return rootView;
     }
@@ -291,12 +304,4 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
         mChart.setVisibility(View.VISIBLE);
         mTabContent.setVisibility(View.VISIBLE);
     }
-//    @Override
-//    public void onClick(View view) {
-//        String symbol=StockDetailActivity.this.getIntent().getExtras().getString("Symbol");
-//        Intent i=new Intent(this,NewsActivity.class);
-//        i.putExtra("Symbol",symbol);
-//        Toast.makeText(StockDetailActivity.this.getApplicationContext(),(String)symbol,Toast.LENGTH_SHORT).show();
-//        startActivity(i);
-//    }
 }

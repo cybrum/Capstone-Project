@@ -46,7 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity  android:name="com.udacity.nanodegree.mystockhealth.news.NewsActivity"/>
         <activity
             android:name=".ui.StockDetailActivity"
             android:label="@string/stock_detail_title">
@@ -54,7 +53,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.udacity.nanodegree.mystockhealth.ui.StockListActivity" />
         </activity>
-
+        <activity  android:name="com.udacity.nanodegree.mystockhealth.news.NewsActivity"
+            android:label="@string/stock_detail_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.udacity.nanodegree.mystockhealth.ui.StockListActivity" />
+        </activity>
         <service
             android:name=".appwidget.StockWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
