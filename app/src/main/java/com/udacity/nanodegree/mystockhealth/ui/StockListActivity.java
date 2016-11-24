@@ -246,6 +246,7 @@ public class StockListActivity extends AppCompatActivity implements
             mDialog = new MaterialDialog.Builder(this)
                     .title(R.string.add_symbol)
                     .customView(customView, wrapInScrollView)
+                    .autoDismiss(true)
                     .positiveText(R.string.add)
                     .negativeText(R.string.disagree)
                     .build();
@@ -262,6 +263,7 @@ public class StockListActivity extends AppCompatActivity implements
                     symbol=mStockSymbol.getText().toString();
                     purchase=mPurchasedValue.getText().toString();
                     addStockQuote(symbol.replaceAll("\\s","").toUpperCase(),quantity,purchase);
+                    mDialog.dismiss();
                 }
             });
             
