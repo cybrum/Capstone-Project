@@ -45,7 +45,7 @@ public class NewsActivity extends AppCompatActivity implements OnScrollListener,
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE))
                 .inflate(R.layout.loadmore, null, false);
         newsView.setAdapter(na);
-        symbol = this.getIntent().getExtras().getString("Symbol");
+        symbol = this.getIntent().getExtras().getString("@string/symbol");
         new NewsFetcher(symbol, na, Integer.valueOf(currentPage)).execute();
 
         ActionBar actionBar = getSupportActionBar();
@@ -56,7 +56,7 @@ public class NewsActivity extends AppCompatActivity implements OnScrollListener,
 
         newsView.setOnScrollListener(this);
         newsView.setOnItemClickListener(this);
-        Toast.makeText(getApplicationContext(), "Fetching Data - " + symbol, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), symbol, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -70,7 +70,7 @@ public class NewsActivity extends AppCompatActivity implements OnScrollListener,
                 }
             }
             if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Fetching More Data", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "@string/fetching_more", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
                 new NewsFetcher(symbol, na, currentPage).execute();
@@ -80,20 +80,19 @@ public class NewsActivity extends AppCompatActivity implements OnScrollListener,
     }
 
     @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        this.firstVisibleItem = firstVisibleItem;
-        this.visibleItemCount = visibleItemCount;
-        this.totalItemCount = totalItemCount;
-    }
-
-    @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         if (na != null) {
             String url = ((NewsEntry) na.getItem(i)).getLink();
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
-            Toast.makeText(this, "Opening URL", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "@string/opening_url", Toast.LENGTH_SHORT).show();
             startActivity(intent);
         }
+    }
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        this.firstVisibleItem = firstVisibleItem;
+        this.visibleItemCount = visibleItemCount;
+        this.totalItemCount = totalItemCount;
     }
 }

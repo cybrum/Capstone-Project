@@ -54,7 +54,7 @@ public class StockDetailActivity extends AppCompatActivity {
         if (id == android.R.id.home) {
             onBackPressed();
 //            if (getActionBar() != null) {
-//                getActionBar().setTitle("Stock Hawk");
+//                getActionBar().setTitle("My Stock Health");
 //            }
             return true;
         }

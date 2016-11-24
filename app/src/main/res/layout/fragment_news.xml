@@ -12,6 +12,8 @@
         android:layout_alignParentTop="true"
         android:alpha="0.5"
         android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"></ListView>
+        android:dividerHeight="1dp">
+
+    </ListView>
 
 </RelativeLayout>
