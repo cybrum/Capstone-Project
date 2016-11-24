@@ -7,7 +7,10 @@ import net.simonvt.schematic.annotation.NotNull;
 import net.simonvt.schematic.annotation.PrimaryKey;
 
 /**
- Credit: Dmitry Malkovich , sam_chordas
+ * Reference: https://github.com/SimonVT/schematic
+ * Schematic: Automatically generate a ContentProvider backed by an SQLite database.
+ * Usage: First create a class that contains the columns of a database table.
+ * Credit: Dmitry Malkovich , sam_chordas
  */
 public class QuoteColumns {
     @DataType(DataType.Type.INTEGER)
