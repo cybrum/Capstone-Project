@@ -264,24 +264,7 @@ public class StockListActivity extends AppCompatActivity implements
                     addStockQuote(symbol.replaceAll("\\s","").toUpperCase(),quantity,purchase);
                 }
             });
-            //String quantity=mQuantity.getText().toString();
-
-//            mDialog = new MaterialDialog.Builder(this)
-//                    .title(R.string.add_symbol)
-//                    .inputType(InputType.TYPE_CLASS_TEXT)
-//                    .autoDismiss(true)
-//                    .customView(R.layout.add_dialog_layout,true)
-//                    .positiveText(R.string.add)
-//                    .negativeText(R.string.disagree)
-////                    .input(R.string.input_hint, R.string.input_pre_fill, false,
-////                            new MaterialDialog.InputCallback() {
-////                                @Override
-////                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-////                                    addStockQuote(input.toString().replaceAll("\\s","").toUpperCase());
-////                                }
-////                            }).build();
-////            mDialog.show();
-
+            
         } else {
             Snackbar.make(mCoordinatorLayout, getString(R.string.no_internet_connection),
                     Snackbar.LENGTH_LONG).setAction(R.string.try_again, new View.OnClickListener() {
