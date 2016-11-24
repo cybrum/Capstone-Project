@@ -46,7 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity  android:name="com.udacity.nanodegree.mystockhealth.news.NewsActivity"/>
         <activity
             android:name=".ui.StockDetailActivity"
             android:label="@string/stock_detail_title">

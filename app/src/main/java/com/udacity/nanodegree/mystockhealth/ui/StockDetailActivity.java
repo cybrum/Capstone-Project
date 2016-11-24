@@ -1,11 +1,18 @@
 
 package com.udacity.nanodegree.mystockhealth.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import com.udacity.nanodegree.mystockhealth.R;
+import com.udacity.nanodegree.mystockhealth.news.NewsActivity;
 import com.udacity.nanodegree.mystockhealth.ui.StockDetailFragment;
 import com.udacity.nanodegree.mystockhealth.ui.StockListActivity;
 
@@ -17,6 +24,7 @@ import com.udacity.nanodegree.mystockhealth.ui.StockListActivity;
  */
 public class StockDetailActivity extends AppCompatActivity {
 
+    private Button mNewsButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +45,7 @@ public class StockDetailActivity extends AppCompatActivity {
                     .add(R.id.stock_detail_container, fragment)
                     .commit();
         }
+
     }
 
     @Override
@@ -51,4 +60,5 @@ public class StockDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

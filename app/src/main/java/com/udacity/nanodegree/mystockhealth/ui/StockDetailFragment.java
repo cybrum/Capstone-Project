@@ -15,6 +15,7 @@
  */
 package com.udacity.nanodegree.mystockhealth.ui;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -29,12 +30,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.udacity.nanodegree.mystockhealth.R;
 import com.udacity.nanodegree.mystockhealth.data.QuoteColumns;
 import com.udacity.nanodegree.mystockhealth.data.QuoteHistoricalDataColumns;
 import com.udacity.nanodegree.mystockhealth.data.QuoteProvider;
+import com.udacity.nanodegree.mystockhealth.news.NewsActivity;
 import com.udacity.nanodegree.mystockhealth.ui.StockDetailActivity;
 
 import java.util.ArrayList;
@@ -98,7 +103,6 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
                 getActionBar().setTitle("");
             }
         }
-
         if (savedInstanceState == null) {
             mSelectedTab = getString(R.string.stock_detail_tab1);
         } else {
@@ -287,4 +291,12 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
         mChart.setVisibility(View.VISIBLE);
         mTabContent.setVisibility(View.VISIBLE);
     }
+//    @Override
+//    public void onClick(View view) {
+//        String symbol=StockDetailActivity.this.getIntent().getExtras().getString("Symbol");
+//        Intent i=new Intent(this,NewsActivity.class);
+//        i.putExtra("Symbol",symbol);
+//        Toast.makeText(StockDetailActivity.this.getApplicationContext(),(String)symbol,Toast.LENGTH_SHORT).show();
+//        startActivity(i);
+//    }
 }
