@@ -6,4 +6,5 @@
     <color name="material_green_700">#00C853</color>
     <color name="empty_view_text_color">#BDBDBD</color>
     <color name="text_color">#ffffff</color>
+    <color name="bottom_area_color">#666565</color>
 </resources>
