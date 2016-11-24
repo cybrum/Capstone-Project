@@ -124,10 +124,9 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
         mNewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String symbol = getActivity().getIntent().getExtras().getString("Symbol");
                 Intent i = new Intent(getActivity(), NewsActivity.class);
-                i.putExtra("Symbol", symbol);
-                Toast.makeText(getActivity().getApplicationContext(), (String) symbol, Toast.LENGTH_SHORT).show();
+                i.putExtra("Symbol", mSymbol);
+                Toast.makeText(getActivity().getApplicationContext(),mSymbol, Toast.LENGTH_SHORT).show();
                 startActivity(i);
             }
         });
