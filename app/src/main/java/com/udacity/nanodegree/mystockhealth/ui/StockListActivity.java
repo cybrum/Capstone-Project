@@ -19,11 +19,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.udacity.nanodegree.mystockhealth.R;
 import com.udacity.nanodegree.mystockhealth.data.QuoteColumns;
@@ -64,6 +67,11 @@ public class StockListActivity extends AppCompatActivity implements
     private boolean mTwoPane;
     private MaterialDialog mDialog;
 
+
+    private EditText mQuantity;
+    private EditText mPurchasedValue;
+    private  EditText mStockSymbol;
+
     @Bind(R.id.stock_list)
     RecyclerView mRecyclerView;
     @Bind(R.id.empty_state_no_connection)
@@ -74,6 +82,7 @@ public class StockListActivity extends AppCompatActivity implements
     ProgressBar mProgressBar;
     @Bind(R.id.coordinator_layout)
     CoordinatorLayout mCoordinatorLayout;
+    String quantity,purchase,symbol="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,19 +240,47 @@ public class StockListActivity extends AppCompatActivity implements
     @OnClick(R.id.fab)
     public void showDialogForAddingStock() {
         if (isNetworkAvailable()) {
-            mDialog = new MaterialDialog.Builder(this).title(R.string.add_symbol)
-                    .inputType(InputType.TYPE_CLASS_TEXT)
-                    .autoDismiss(true)
+            final View customView;
+            boolean wrapInScrollView = true;
+            customView = LayoutInflater.from(StockListActivity.this).inflate(R.layout.add_dialog_layout, null);
+            mDialog = new MaterialDialog.Builder(this)
+                    .title(R.string.add_symbol)
+                    .customView(customView, wrapInScrollView)
                     .positiveText(R.string.add)
                     .negativeText(R.string.disagree)
-                    .input(R.string.input_hint, R.string.input_pre_fill, false,
-                            new MaterialDialog.InputCallback() {
-                                @Override
-                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                                    addStockQuote(input.toString().replaceAll("\\s","").toUpperCase());
-                                }
-                            }).build();
+                    .build();
             mDialog.show();
+            View view = mDialog.getCustomView();
+            mQuantity= (EditText) view.findViewById(R.id.quatity);
+            mPurchasedValue= (EditText) view.findViewById(R.id.purchased_value);
+            mStockSymbol= (EditText) view.findViewById(R.id.addSymbol);
+            View positive = mDialog.getActionButton(DialogAction.POSITIVE);
+            positive.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    quantity=mQuantity.getText().toString();
+                    symbol=mStockSymbol.getText().toString();
+                    purchase=mPurchasedValue.getText().toString();
+                    addStockQuote(symbol.replaceAll("\\s","").toUpperCase(),quantity,purchase);
+                }
+            });
+            //String quantity=mQuantity.getText().toString();
+
+//            mDialog = new MaterialDialog.Builder(this)
+//                    .title(R.string.add_symbol)
+//                    .inputType(InputType.TYPE_CLASS_TEXT)
+//                    .autoDismiss(true)
+//                    .customView(R.layout.add_dialog_layout,true)
+//                    .positiveText(R.string.add)
+//                    .negativeText(R.string.disagree)
+////                    .input(R.string.input_hint, R.string.input_pre_fill, false,
+////                            new MaterialDialog.InputCallback() {
+////                                @Override
+////                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+////                                    addStockQuote(input.toString().replaceAll("\\s","").toUpperCase());
+////                                }
+////                            }).build();
+////            mDialog.show();
 
         } else {
             Snackbar.make(mCoordinatorLayout, getString(R.string.no_internet_connection),
@@ -274,7 +311,7 @@ public class StockListActivity extends AppCompatActivity implements
         }
     }
 
-    private void addStockQuote(final String stockQuote) {
+    private void addStockQuote(final String stockQuote , final String quantity, final String value) {
         // On FAB click, receive user input. Make sure the stock doesn't already exist
         // in the DB and proceed accordingly.
         new AsyncTask<Void, Void, Boolean>() {

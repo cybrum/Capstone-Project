@@ -63,7 +63,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone" />
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:alpha="0.5"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/holo_blue_dark" />
     <include layout="@layout/empty_state_no_connection" />
 
     <include layout="@layout/empty_state_no_stocks" />
