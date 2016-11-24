@@ -1,18 +1,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#000000" >
-     <ListView
+    android:layout_height="fill_parent">
+
+    <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" 
-        android:divider="#00000000"
-    	android:dividerHeight="10dp"
-    	android:stackFromBottom="true">
-    	</ListView>>
+        android:layout_alignParentTop="true"
+        android:alpha="0.5"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"></ListView>
 
 </RelativeLayout>
