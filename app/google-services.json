@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "898707718117",
+    "firebase_url": "https://mystockhealth.firebaseio.com",
+    "project_id": "mystockhealth",
+    "storage_bucket": "mystockhealth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898707718117:android:672d84c0a30c02dc",
+        "android_client_info": {
+          "package_name": "com.udacity.nanodegree.mystockhealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898707718117-cpvv8dtcevhuo88pg63lkd5tento4i0j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.udacity.nanodegree.mystockhealth",
+            "certificate_hash": "DFD525B2B6D19934AD0FAF29995193B92EA0E0C5"
+          }
+        },
+        {
+          "client_id": "898707718117-nablcvjhiik7lcsc1naadspldbo5i7o7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": ""
+        }],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898707718117-nablcvjhiik7lcsc1naadspldbo5i7o7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
