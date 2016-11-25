@@ -52,6 +52,7 @@ public class StockIntentService extends IntentService {
         // scheduling a task.
         StockTaskService stockTaskService = new StockTaskService(this);
         stockTaskService.onRunTask(new TaskParams(intent.getStringExtra(EXTRA_TAG), args));
-        
+      //  stockTaskService.onRunTask(new TaskParams(intent.getStringExtra(QUANTITY), args));
+      //  stockTaskService.onRunTask(new TaskParams(intent.getStringExtra(PURCHASE_COST), args));
     }
 }

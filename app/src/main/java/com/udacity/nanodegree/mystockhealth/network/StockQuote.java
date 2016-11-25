@@ -25,6 +25,21 @@ public class StockQuote {
     @SerializedName("ChangeinPercent")
     private String mChangeInPercent;
 
+
+    @SerializedName("Quantity")
+    private String mQuantity;
+
+    @SerializedName("Cost")
+    private String mCost;
+
+    public String getQuantity() {
+        return mQuantity;
+    }
+
+    public String getCost() {
+        return mCost;
+    }
+
     public String getChange() {
         return mChange;
     }

@@ -84,6 +84,10 @@ public class QuoteProvider {
         builder.withValue(QuoteColumns.PERCENT_CHANGE, truncateChange(
                 quote.getChangeInPercent(), true));
         builder.withValue(QuoteColumns.CHANGE, truncateChange(change, false));
+
+        builder.withValue(QuoteColumns.QUANTITY, quote.getQuantity());
+        builder.withValue(QuoteColumns.PURCHASE_COST, quote.getCost());
+
         builder.withValue(QuoteColumns.ISCURRENT, 1);
         if (change.charAt(0) == '-') {
             builder.withValue(QuoteColumns.ISUP, 0);
