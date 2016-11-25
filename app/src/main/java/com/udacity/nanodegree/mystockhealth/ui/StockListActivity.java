@@ -195,7 +195,7 @@ public class StockListActivity extends AppCompatActivity implements
         mEmptyStateNoStocks.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         return new CursorLoader(this, QuoteProvider.Quotes.CONTENT_URI,
-                new String[]{QuoteColumns._ID, QuoteColumns.SYMBOL, QuoteColumns.BIDPRICE,
+                new String[]{QuoteColumns._ID, QuoteColumns.SYMBOL,QuoteColumns.QUANTITY,QuoteColumns.PURCHASE_COST, QuoteColumns.BIDPRICE,
                         QuoteColumns.PERCENT_CHANGE, QuoteColumns.CHANGE, QuoteColumns.ISUP},
                 QuoteColumns.ISCURRENT + " = ?",
                 new String[]{"1"},
