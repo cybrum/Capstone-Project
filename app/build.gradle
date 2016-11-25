@@ -34,7 +34,7 @@ repositories {
 dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.afollestad.material-dialogs:core:0.9.1.0'
-    compile 'com.google.android.gms:play-services-gcm:10.0.0'
+    compile 'com.google.android.gms:play-services-gcm:9.8.0'
     compile 'net.simonvt.schematic:schematic-compiler:0.6.3'
     compile 'net.simonvt.schematic:schematic:0.6.3'
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
@@ -48,14 +48,15 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
 
     // Firebase
-//    compile 'com.google.firebase:firebase-database:9.8.0'
-//    compile 'com.google.firebase:firebase-auth:9.8.0'
-//    compile 'com.google.firebase:firebase-messaging:9.8.0'
+    compile 'com.google.firebase:firebase-database:9.8.0'
+    compile 'com.google.firebase:firebase-auth:9.8.0'
+    compile 'com.google.firebase:firebase-messaging:9.8.0'
     // FirebaseUI Database only
     //compile 'com.firebaseui:firebase-ui-database:1.0.0'
 
     // Single target that includes all FirebaseUI libraries
-    //compile 'com.firebaseui:firebase-ui-auth:1.0.0'
+    //1.0.0 needs com.twitter.sdk.android:twitter:2.0.0.
+    compile 'com.firebaseui:firebase-ui-auth:0.6.2'
 }
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.google.gms.google-services'

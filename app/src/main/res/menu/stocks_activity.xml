@@ -8,4 +8,8 @@
         android:icon="@drawable/ic_attach_money_white_24dp"
         android:title="@string/action_change_units"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/sign_out_menu"
+        android:title="@string/sign_out"
+        app:showAsAction="never"/>
 </menu>

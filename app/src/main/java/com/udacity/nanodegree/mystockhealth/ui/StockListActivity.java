@@ -28,6 +28,9 @@ import android.widget.ProgressBar;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.udacity.nanodegree.mystockhealth.R;
 import com.udacity.nanodegree.mystockhealth.data.QuoteColumns;
 import com.udacity.nanodegree.mystockhealth.data.QuoteProvider;
@@ -62,6 +65,9 @@ public class StockListActivity extends AppCompatActivity implements
     private final String EXTRA_CHANGE_UNITS = "EXTRA_CHANGE_UNITS";
     private final String EXTRA_ADD_DIALOG_OPENED = "EXTRA_ADD_DIALOG_OPENED";
 
+    public static final String ANONYMOUS = "anonymous";
+    public static final int RC_SIGN_IN = 1;
+
     private int mChangeUnits = CHANGE_UNITS_DOLLARS;
     private QuoteCursorAdapter mAdapter;
     private boolean mTwoPane;
@@ -71,6 +77,12 @@ public class StockListActivity extends AppCompatActivity implements
     private EditText mQuantity;
     private EditText mPurchasedValue;
     private  EditText mStockSymbol;
+    //Firebase instances
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
+
+    private String mUsername;
+    private String quantity,purchase,symbol="";
 
     @Bind(R.id.stock_list)
     RecyclerView mRecyclerView;
@@ -82,13 +94,16 @@ public class StockListActivity extends AppCompatActivity implements
     ProgressBar mProgressBar;
     @Bind(R.id.coordinator_layout)
     CoordinatorLayout mCoordinatorLayout;
-    String quantity,purchase,symbol="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mUsername = ANONYMOUS;
         setContentView(R.layout.activity_stock_list);
         ButterKnife.bind(this);
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(true);
@@ -143,8 +158,38 @@ public class StockListActivity extends AppCompatActivity implements
         // are updated.
         GcmNetworkManager.getInstance(this).schedule(periodicTask);
 
-    }
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    onSignedInInitialize(user.getDisplayName());
+                } else {
+                    // User is signed out
+                    onSignedOutCleanup();
+                    startActivityForResult(
+                            AuthUI.getInstance()
+                                    .createSignInIntentBuilder()
+                                    .setIsSmartLockEnabled(false)
+                                    .setProviders(
+                                            AuthUI.EMAIL_PROVIDER,
+                                            AuthUI.GOOGLE_PROVIDER)
+                                    .build(),
+                            RC_SIGN_IN);
+                }
+            }
+        };
 
+    }
+    private void onSignedInInitialize(String username) {
+        mUsername = username;
+        //attachDatabaseReadListener();
+    }
+    private void onSignedOutCleanup() {
+        mUsername = ANONYMOUS;
+        //detachDatabaseReadListener();
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -177,16 +222,24 @@ public class StockListActivity extends AppCompatActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_change_units) {
-            if (mChangeUnits == CHANGE_UNITS_DOLLARS) {
-                mChangeUnits = CHANGE_UNITS_PERCENTAGES;
-            } else {
-                mChangeUnits = CHANGE_UNITS_DOLLARS;
+
+        switch (item.getItemId()) {
+            case R.id.sign_out_menu:
+                AuthUI.getInstance().signOut(this);
+                return true;
+            case R.id.action_change_units: {
+                if (mChangeUnits == CHANGE_UNITS_DOLLARS) {
+                    mChangeUnits = CHANGE_UNITS_PERCENTAGES;
+                } else {
+                    mChangeUnits = CHANGE_UNITS_DOLLARS;
+                }
+                mAdapter.setChangeUnits(mChangeUnits);
+                mAdapter.notifyDataSetChanged();
             }
-            mAdapter.setChangeUnits(mChangeUnits);
-            mAdapter.notifyDataSetChanged();
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
