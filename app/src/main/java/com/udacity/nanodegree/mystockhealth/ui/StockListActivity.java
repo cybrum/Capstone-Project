@@ -325,8 +325,6 @@ public class StockListActivity extends AppCompatActivity implements
                             StockIntentService.class);
                     stockIntentService.putExtra(StockIntentService.EXTRA_TAG, StockIntentService.ACTION_ADD);
                     stockIntentService.putExtra(StockIntentService.EXTRA_SYMBOL, stockQuote);
-                    stockIntentService.putExtra(StockIntentService.QUANTITY, stockQuote);
-                    stockIntentService.putExtra(StockIntentService.PURCHASE_COST, stockQuote);
                     startService(stockIntentService);
                 }
             }
