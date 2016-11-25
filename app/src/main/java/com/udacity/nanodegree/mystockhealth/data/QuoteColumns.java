@@ -39,5 +39,11 @@ public class QuoteColumns {
     public static final String ISCURRENT = "is_current";
     @DataType(DataType.Type.TEXT)
     @NotNull
+    public static final String QUANTITY = "quantity";
+    @DataType(DataType.Type.TEXT)
+    @NotNull
+    public static final String PURCHASE_COST = "cost";
+    @DataType(DataType.Type.TEXT)
+    @NotNull
     public static final String NAME = "name";
 }

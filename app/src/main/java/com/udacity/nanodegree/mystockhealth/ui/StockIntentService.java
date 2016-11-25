@@ -29,6 +29,8 @@ public class StockIntentService extends IntentService {
 
     public static final String EXTRA_TAG = "tag";
     public static final String EXTRA_SYMBOL = "symbol";
+    public static final String QUANTITY = "quantity";
+    public static final String PURCHASE_COST = "cost";
 
     public static final String ACTION_INIT = "init";
     public static final String ACTION_ADD = "add";
@@ -42,11 +44,14 @@ public class StockIntentService extends IntentService {
         Bundle args = new Bundle();
         if (intent.getStringExtra(EXTRA_TAG).equals(ACTION_ADD)) {
             args.putString(EXTRA_SYMBOL, intent.getStringExtra(EXTRA_SYMBOL));
+            args.putString(QUANTITY, intent.getStringExtra(QUANTITY));
+            args.putString(PURCHASE_COST, intent.getStringExtra(PURCHASE_COST));
         }
 
         // We can call OnRunTask from the intent service to force it to run immediately instead of
         // scheduling a task.
         StockTaskService stockTaskService = new StockTaskService(this);
         stockTaskService.onRunTask(new TaskParams(intent.getStringExtra(EXTRA_TAG), args));
+        
     }
 }
