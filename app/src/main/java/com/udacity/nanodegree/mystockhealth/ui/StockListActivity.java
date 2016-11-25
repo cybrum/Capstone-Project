@@ -191,8 +191,16 @@ public class StockListActivity extends AppCompatActivity implements
         //detachDatabaseReadListener();
     }
     @Override
+    protected void onPause() {
+        super.onPause();
+        if (mAuthStateListener != null) {
+            mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        }
+    }
+    @Override
     public void onResume() {
         super.onResume();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
         getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
     }
 
