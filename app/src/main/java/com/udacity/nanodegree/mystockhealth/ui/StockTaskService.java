@@ -83,12 +83,16 @@ public class StockTaskService extends GcmTaskService {
                 Call<ResponseGetStocks> call = service.getStocks(query);
                 Response<ResponseGetStocks> response = call.execute();
                 ResponseGetStocks responseGetStocks = response.body();
-                saveQuotes2Database(responseGetStocks.getStockQuotes());
+                if(responseGetStocks!=null) {
+                    saveQuotes2Database(responseGetStocks.getStockQuotes());
+                }
             } else {
                 Call<ResponseGetStock> call = service.getStock(query);
                 Response<ResponseGetStock> response = call.execute();
                 ResponseGetStock responseGetStock = response.body();
-                saveQuotes2Database(responseGetStock.getStockQuotes());
+                if(responseGetStock!=null) {
+                    saveQuotes2Database(responseGetStock.getStockQuotes());
+                }
             }
 
             return GcmNetworkManager.RESULT_SUCCESS;
