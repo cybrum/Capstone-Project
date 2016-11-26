@@ -14,6 +14,8 @@
     <dimen name="line_chart_padding">16dp</dimen>
     <dimen name="stock_bidprice_text_size">42sp</dimen>
     <dimen name="detail_change_text_size">16sp</dimen>
+    <dimen name="headline_text_size">16sp</dimen>
+    <dimen name="subheader_text_size">14sp</dimen>
     <dimen name="detail_change_container_vertical_padding">8dp</dimen>
     <dimen name="detail_stock_symbol_text_size">18sp</dimen>
     <dimen name="widget_height">80dp</dimen>
