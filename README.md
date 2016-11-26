@@ -1,9 +1,24 @@
-# Stock Hawk App
-Stock Hawk is the fourth project in Udacity's Android Developer Nanodegree.
+# My Stock Health App
 
-Allows user to access real time stock information. Users can add stocks they want to keep track of.
-A collection widget can be used to keep track of stocks from home screen. 
-Stock price trend for past year can be checked using graphs. Built in localization support.
+Description 
+
+This app can be used to monitor the stock market, the performance of stock portfolios and decide investment strategy. Users can add their stock information and track their portfolios.
+
+Intended User
+
+This app is for stock market users. 
+
+Features:
+
+This application monitors the stock market, the performance of your stock portfolios.
+This includes:
+✓ Login /Logout
+✓ Secured Access to data.
+✓ Save in a Real-time Cloud Database
+✓ All portfolios and stock market quotes are stored locally on your Phone/Tablet.
+✓ Visual representation of stock performance.
+✓ Stocks widget that displays stock quotes.
+✓ Read your stock related News
 
 
 ## License
