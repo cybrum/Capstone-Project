@@ -34,4 +34,5 @@
     <string name="cost" translatable="false">Purchase cost</string>
     <string name="variation" translatable="false">Variation</string>
     <string name="sign_out" translatable="false">Sign Out</string>
+    <string name="symbol_not_found">Symbol not found</string>
 </resources>

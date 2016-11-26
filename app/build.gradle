@@ -1,5 +1,12 @@
 apply plugin: 'com.android.application'
 
+//// keystore.properties file, in the rootProject folder.
+//def keystorePropertiesFile = rootProject.file("keystore.properties")
+//// Initialize a new Properties() object called keystoreProperties.
+//def keystoreProperties = new Properties()
+//// Load your keystore.properties file into the keystoreProperties object.
+//keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
@@ -16,11 +23,28 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.release
+        }
+        shrunk {
+            minifyEnabled true
+            shrinkResources true
+        }
+        big {
+            minifyEnabled false
+            shrinkResources false
         }
     }
-
+//TODO: Add ad for free flavor
+//    productFlavors{
+//        free{
+//            applicationId "com.udacity.nanodegree.mystockhealth.free"
+//        }
+//        paid{
+//            applicationId "com.udacity.nanodegree.mystockhealth.paid"
+//        }
+//    }
     lintOptions {
         disable 'InvalidPackage'
     }
@@ -28,6 +52,14 @@ android {
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
+//    signingConfigs {
+//        config {
+//            keyAlias keystoreProperties['keyAlias']
+//            keyPassword keystoreProperties['keyPassword']
+//            storeFile file(keystoreProperties['storeFile'])
+//            storePassword keystoreProperties['storePassword']
+//        }
+//    }
 }
 
 repositories {

@@ -79,13 +79,13 @@ public class StockListActivity extends AppCompatActivity implements
 
     private EditText mQuantity;
     private EditText mPurchasedValue;
-    private  EditText mStockSymbol;
+    private EditText mStockSymbol;
     //Firebase instances
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     private String mUsername;
-    private String quantity,purchase,symbol="";
+    private String quantity, purchase, symbol = "";
 
     @Bind(R.id.stock_list)
     RecyclerView mRecyclerView;
@@ -185,14 +185,17 @@ public class StockListActivity extends AppCompatActivity implements
         GcmNetworkManager.getInstance(this).schedule(periodicTask);
 
     }
+
     private void onSignedInInitialize(String username) {
         mUsername = username;
         //attachDatabaseReadListener();
     }
+
     private void onSignedOutCleanup() {
         mUsername = ANONYMOUS;
         //detachDatabaseReadListener();
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -200,6 +203,7 @@ public class StockListActivity extends AppCompatActivity implements
             mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
         }
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -259,7 +263,7 @@ public class StockListActivity extends AppCompatActivity implements
         mEmptyStateNoStocks.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         return new CursorLoader(this, QuoteProvider.Quotes.CONTENT_URI,
-                new String[]{QuoteColumns._ID, QuoteColumns.SYMBOL,QuoteColumns.QUANTITY,QuoteColumns.PURCHASE_COST, QuoteColumns.BIDPRICE,
+                new String[]{QuoteColumns._ID, QuoteColumns.SYMBOL, QuoteColumns.QUANTITY, QuoteColumns.PURCHASE_COST, QuoteColumns.BIDPRICE,
                         QuoteColumns.PERCENT_CHANGE, QuoteColumns.CHANGE, QuoteColumns.ISUP},
                 QuoteColumns.ISCURRENT + " = ?",
                 new String[]{"1"},
@@ -277,9 +281,7 @@ public class StockListActivity extends AppCompatActivity implements
             } else {
                 mEmptyStateNoStocks.setVisibility(View.VISIBLE);
             }
-        }
-        else
-        {
+        } else {
             mEmptyStateNoConnection.setVisibility(View.GONE);
             mEmptyStateNoStocks.setVisibility(View.GONE);
         }
@@ -316,21 +318,21 @@ public class StockListActivity extends AppCompatActivity implements
                     .build();
             mDialog.show();
             View view = mDialog.getCustomView();
-            mQuantity= (EditText) view.findViewById(R.id.quatity);
-            mPurchasedValue= (EditText) view.findViewById(R.id.purchased_value);
-            mStockSymbol= (EditText) view.findViewById(R.id.addSymbol);
+            mQuantity = (EditText) view.findViewById(R.id.quatity);
+            mPurchasedValue = (EditText) view.findViewById(R.id.purchased_value);
+            mStockSymbol = (EditText) view.findViewById(R.id.addSymbol);
             View positive = mDialog.getActionButton(DialogAction.POSITIVE);
             positive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    quantity=mQuantity.getText().toString();
-                    symbol=mStockSymbol.getText().toString();
-                    purchase=mPurchasedValue.getText().toString();
-                    addStockQuote(symbol.replaceAll("\\s","").toUpperCase(),quantity,purchase);
+                    quantity = mQuantity.getText().toString();
+                    symbol = mStockSymbol.getText().toString();
+                    purchase = mPurchasedValue.getText().toString();
+                    addStockQuote(symbol.replaceAll("\\s", "").toUpperCase(), quantity, purchase);
                     mDialog.dismiss();
                 }
             });
-            
+
         } else {
             Snackbar.make(mCoordinatorLayout, getString(R.string.no_internet_connection),
                     Snackbar.LENGTH_LONG).setAction(R.string.try_again, new View.OnClickListener() {
@@ -360,7 +362,7 @@ public class StockListActivity extends AppCompatActivity implements
         }
     }
 
-    private void addStockQuote(final String stockQuote , final String quantity, final String value) {
+    private void addStockQuote(final String stockQuote, final String quantity, final String value) {
         // On FAB click, receive user input. Make sure the stock doesn't already exist
         // in the DB and proceed accordingly.
         new AsyncTask<Void, Void, Boolean>() {
