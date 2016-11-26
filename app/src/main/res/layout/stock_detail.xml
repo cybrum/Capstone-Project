@@ -71,7 +71,7 @@
                     <FrameLayout
                         android:id="@android:id/tabcontent"
                         android:layout_width="match_parent"
-                        android:layout_height="350dp">
+                        android:layout_height="400dp">
 
                         <lecho.lib.hellocharts.view.LineChartView
                             android:id="@+id/stock_chart"
@@ -80,6 +80,7 @@
                             android:padding="@dimen/line_chart_padding"
                             android:visibility="invisible" />
 
+
                     </FrameLayout>
 
                 </LinearLayout>
@@ -87,20 +88,13 @@
             </TabHost>
 
         </android.support.v4.widget.NestedScrollView>
+
     </LinearLayout>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/newsBtn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/transparent">
-
-        <Button
-            android:id="@+id/newsBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="@string/read_news" />
-    </LinearLayout>
-
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="@string/read_news" />
 </android.support.design.widget.CoordinatorLayout>
