@@ -35,4 +35,6 @@
     <string name="variation" translatable="false">Variation</string>
     <string name="sign_out" translatable="false">Sign Out</string>
     <string name="symbol_not_found">Symbol not found</string>
+    <string name="signin_cancelled" translatable="false">Sign in canceled</string>
+    <string name="signed_in" translatable="false">Signed in!</string>
 </resources>

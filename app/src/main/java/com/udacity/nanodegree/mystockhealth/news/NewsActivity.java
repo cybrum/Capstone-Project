@@ -45,7 +45,7 @@ public class NewsActivity extends AppCompatActivity implements OnScrollListener,
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE))
                 .inflate(R.layout.loadmore, null, false);
         newsView.setAdapter(na);
-        symbol = this.getIntent().getExtras().getString("@string/symbol");
+        symbol = this.getIntent().getExtras().getString("Symbol");
         new NewsFetcher(symbol, na, Integer.valueOf(currentPage)).execute();
 
         ActionBar actionBar = getSupportActionBar();
@@ -70,7 +70,7 @@ public class NewsActivity extends AppCompatActivity implements OnScrollListener,
                 }
             }
             if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
-                Toast toast = Toast.makeText(getApplicationContext(), "@string/fetching_more", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), R.string.fetching_more, Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
                 new NewsFetcher(symbol, na, currentPage).execute();
@@ -85,7 +85,7 @@ public class NewsActivity extends AppCompatActivity implements OnScrollListener,
             String url = ((NewsEntry) na.getItem(i)).getLink();
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
-            Toast.makeText(this, "@string/opening_url", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.opening_url, Toast.LENGTH_SHORT).show();
             startActivity(intent);
         }
     }
