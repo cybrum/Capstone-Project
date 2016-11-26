@@ -34,6 +34,8 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.udacity.nanodegree.mystockhealth.R;
 import com.udacity.nanodegree.mystockhealth.data.QuoteColumns;
 import com.udacity.nanodegree.mystockhealth.data.QuoteProvider;
@@ -74,6 +76,8 @@ public class StockListActivity extends AppCompatActivity implements
     private EditText mStockSymbol;
     //Firebase instances
     private FirebaseAuth mFirebaseAuth;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mMessagesDatabaseReference;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     private String mUsername;
@@ -99,6 +103,9 @@ public class StockListActivity extends AppCompatActivity implements
         ButterKnife.bind(this);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("stocks");
+
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -380,6 +387,9 @@ public class StockListActivity extends AppCompatActivity implements
                     Snackbar.make(mCoordinatorLayout, R.string.stock_already_saved,
                             Snackbar.LENGTH_LONG).show();
                 } else {
+                    StockEntry stockEntry = new StockEntry(symbol, Integer.parseInt(quantity), Double.parseDouble(purchase));
+                    mMessagesDatabaseReference.push().setValue(stockEntry);
+
                     Intent stockIntentService = new Intent(StockListActivity.this,
                             StockIntentService.class);
                     stockIntentService.putExtra(StockIntentService.EXTRA_TAG, StockIntentService.ACTION_ADD);
