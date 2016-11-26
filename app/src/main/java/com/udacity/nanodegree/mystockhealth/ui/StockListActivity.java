@@ -34,6 +34,9 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.udacity.nanodegree.mystockhealth.R;
@@ -79,6 +82,7 @@ public class StockListActivity extends AppCompatActivity implements
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mMessagesDatabaseReference;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private ChildEventListener mChildEventListener;
 
     private String mUsername;
     private String quantity, purchase, symbol = "";
@@ -188,12 +192,12 @@ public class StockListActivity extends AppCompatActivity implements
 
     private void onSignedInInitialize(String username) {
         mUsername = username;
-        //attachDatabaseReadListener();
+        attachDatabaseReadListener();
     }
 
     private void onSignedOutCleanup() {
         mUsername = ANONYMOUS;
-        //detachDatabaseReadListener();
+        detachDatabaseReadListener();
     }
 
     @Override
@@ -325,9 +329,25 @@ public class StockListActivity extends AppCompatActivity implements
             positive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    quantity = mQuantity.getText().toString();
-                    symbol = mStockSymbol.getText().toString();
-                    purchase = mPurchasedValue.getText().toString();
+
+                    if( mQuantity.getText().toString().length() == 0 ) {
+                        //mQuantity.setError("Quantity is required!");
+                        quantity ="0";
+                    } else {
+                        quantity = mQuantity.getText().toString();
+                    }
+                    if( mPurchasedValue.getText().toString().length() == 0 ) {
+                        //mPurchasedValue.setError("Purchase Value is required!");
+                        purchase ="0.00";
+                    } else {
+                        purchase = mPurchasedValue.getText().toString();
+                    }
+                    if( mStockSymbol.getText().toString().length() == 0 ) {
+                        //mStockSymbol.setError("Symbol is required!");
+                        symbol ="";
+                    } else {
+                        symbol = mStockSymbol.getText().toString();
+                    }
                     addStockQuote(symbol.replaceAll("\\s", "").toUpperCase(), quantity, purchase);
                     mDialog.dismiss();
                 }
@@ -388,7 +408,9 @@ public class StockListActivity extends AppCompatActivity implements
                             Snackbar.LENGTH_LONG).show();
                 } else {
                     StockEntry stockEntry = new StockEntry(symbol, Integer.parseInt(quantity), Double.parseDouble(purchase));
-                    mMessagesDatabaseReference.push().setValue(stockEntry);
+                    if(!symbol.isEmpty()) {
+                        mMessagesDatabaseReference.push().setValue(stockEntry);
+                    }
 
                     Intent stockIntentService = new Intent(StockListActivity.this,
                             StockIntentService.class);
@@ -422,5 +444,28 @@ public class StockListActivity extends AppCompatActivity implements
             }
         }
     }
+    private void attachDatabaseReadListener() {
+        if (mChildEventListener == null) {
+            mChildEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    StockEntry stockEntry = dataSnapshot.getValue(StockEntry.class);
+                    //TODO: Create an Adaptor and Sync with SQLiteDB
+                }
 
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+                public void onChildRemoved(DataSnapshot dataSnapshot) {}
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+                public void onCancelled(DatabaseError databaseError) {}
+            };
+            mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
+        }
+    }
+
+    private void detachDatabaseReadListener() {
+        if (mChildEventListener != null) {
+            mMessagesDatabaseReference.removeEventListener(mChildEventListener);
+            mChildEventListener = null;
+        }
+    }
 }

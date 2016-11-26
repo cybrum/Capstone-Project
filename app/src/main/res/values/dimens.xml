@@ -21,4 +21,15 @@
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="stock_symbol_horizontal_padding">8dp</dimen>
     <dimen name="material_default_padding">16dp</dimen>
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="fab_press_translation_z">12dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_min_size">40dp</dimen>
+    <dimen name="refresh_indicator_elevation">3dp</dimen>
+    <dimen name="snackbar_elevation">6dp</dimen>
+    <dimen name="appbar_elevation">4dp</dimen>
+    <dimen name="app_bar_height">56dp</dimen>
+    <dimen name="left_and_right_padding">16dp</dimen>
+    <dimen name="top_and_bottom_padding">16dp</dimen>
+    <dimen name="dialogs_elevation">24dp</dimen>
 </resources>
