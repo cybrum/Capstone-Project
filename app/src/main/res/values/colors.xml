@@ -7,4 +7,5 @@
     <color name="empty_view_text_color">#BDBDBD</color>
     <color name="text_color">#ffffff</color>
     <color name="bottom_area_color">#666565</color>
+    <color name="backgroundColor">#4d4b4b</color>
 </resources>

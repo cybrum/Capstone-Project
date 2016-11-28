@@ -8,8 +8,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/material_blue_500"
+        android:background="@color/backgroundColor"
         android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="@dimen/appbar_elevation">
+
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
 
         <TextView
             android:id="@+id/stock_symbol"
@@ -66,12 +81,12 @@
                         android:id="@android:id/tabs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/material_blue_500" />
+                        android:background="@color/backgroundColor" />
 
                     <FrameLayout
                         android:id="@android:id/tabcontent"
                         android:layout_width="match_parent"
-                        android:layout_height="400dp">
+                        android:layout_height="390dp">
 
                         <lecho.lib.hellocharts.view.LineChartView
                             android:id="@+id/stock_chart"
@@ -79,7 +94,6 @@
                             android:layout_height="match_parent"
                             android:padding="@dimen/line_chart_padding"
                             android:visibility="invisible" />
-
 
                     </FrameLayout>
 
@@ -96,6 +110,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="@string/read_news"
-        android:contentDescription="@string/read_news"/>
+        android:contentDescription="@string/read_news"
+        android:text="@string/read_news" />
 </android.support.design.widget.CoordinatorLayout>

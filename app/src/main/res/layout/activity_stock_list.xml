@@ -6,6 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:elevation="@dimen/appbar_elevation"
+            android:background="?attr/colorPrimary">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,6 +33,7 @@
         android:id="@+id/header_liner"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:background="@color/backgroundColor"
         android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
         android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
         android:weightSum="3">
@@ -53,6 +71,7 @@
         android:id="@+id/stock_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
         tools:listitem="@layout/stock_list_content"
         android:layout_below="@+id/header_liner" />
 
@@ -68,6 +87,7 @@
     <include layout="@layout/empty_state_no_stocks" />
 
     </RelativeLayout>
+        </LinearLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -79,6 +99,5 @@
         android:contentDescription="@string/add_stock_quote"
         android:src="@drawable/ic_add_white_24dp"
         app:backgroundTint="@color/material_blue_500" />
-
 
 </android.support.design.widget.CoordinatorLayout>

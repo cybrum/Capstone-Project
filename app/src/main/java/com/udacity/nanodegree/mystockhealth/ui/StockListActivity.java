@@ -18,6 +18,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -135,9 +136,11 @@ public class StockListActivity extends AppCompatActivity implements
             }
         };
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(true);
-        }
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setDisplayShowTitleEnabled(true);
+//        }
+        Toolbar mToolbar = (Toolbar)findViewById(R.id.toolbar );
+        setSupportActionBar(mToolbar );
 
         if (findViewById(R.id.stock_detail_container) != null) {
             mTwoPane = true;

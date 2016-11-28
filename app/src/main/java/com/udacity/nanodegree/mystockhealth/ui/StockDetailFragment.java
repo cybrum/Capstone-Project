@@ -13,6 +13,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +61,8 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
     private String mSymbol;
     private String mSelectedTab;
 
+    @Bind(R.id.appbar)
+    Toolbar mToolbar;
     @Bind(R.id.newsBtn)
     Button mNewsButton;
     @Bind(R.id.stock_symbol)
@@ -86,12 +89,7 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
             mSymbol = getArguments().getString(ARG_SYMBOL);
         }
 
-        if (getActionBar() != null) {
-            getActionBar().setElevation(0);
-            if (getActivity() instanceof StockDetailActivity) {
-                getActionBar().setTitle("");
-            }
-        }
+
         if (savedInstanceState == null) {
             mSelectedTab = getString(R.string.stock_detail_tab1);
         } else {
@@ -107,6 +105,10 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.stock_detail, container, false);
         ButterKnife.bind(this, rootView);
+        mToolbar = (Toolbar)rootView.findViewById(R.id.appbar);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(mToolbar);
+            activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mNewsButton = (Button) rootView.findViewById(R.id.newsBtn);
         mNewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +116,7 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
                 Intent i = new Intent(getActivity(), NewsActivity.class);
                 i.putExtra("Symbol", mSymbol);
                 //Log.e("on clicked ... ","yeahh");
-                Toast.makeText(getActivity().getApplicationContext(),mSymbol, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), mSymbol, Toast.LENGTH_SHORT).show();
                 startActivity(i);
             }
         });
@@ -167,9 +169,8 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
             mEbitdaView.setText(ebitda);
 
             String name = data.getString(data.getColumnIndex(QuoteColumns.NAME));
-            if (getActionBar() != null) {
-                getActionBar().setTitle(name);
-            }
+
+            mToolbar.setTitle(name);
 
             String change = data.getString(data.getColumnIndex(QuoteColumns.CHANGE));
             String percentChange = data.getString(data.getColumnIndex(QuoteColumns.PERCENT_CHANGE));
