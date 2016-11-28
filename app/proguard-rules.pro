@@ -28,7 +28,18 @@
     @butterknife.* <methods>;
 }
 
+-keepclassmembers class net.simonvt.schematic {
+    public *;
+}
+-keepclassmembers class net.simonvt.schematic {
+    public *;
+}
 -dontwarn retrofit2.**
+-dontwarn net.simonvt.**
+-dontwarn com.squareup.**
+-dontwarn com.google.common.**
+-dontwarn java.nio.**
+-dontwarn okio.**
 -keep class retrofit2.** { *; }
 -keepattributes Signature
--keepattributes Exceptions
+#-keepattributes Exceptions
