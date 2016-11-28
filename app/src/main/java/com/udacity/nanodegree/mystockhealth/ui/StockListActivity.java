@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -317,6 +318,7 @@ public class StockListActivity extends AppCompatActivity implements
             boolean wrapInScrollView = true;
             customView = LayoutInflater.from(StockListActivity.this).inflate(R.layout.add_dialog_layout, null);
             mDialog = new MaterialDialog.Builder(this)
+                    .theme(Theme.DARK)
                     .title(R.string.add_symbol)
                     .customView(customView, wrapInScrollView)
                     .autoDismiss(true)

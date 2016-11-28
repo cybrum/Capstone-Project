@@ -4,90 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
-            android:elevation="@dimen/appbar_elevation"
-            android:background="?attr/colorPrimary">
-
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:id="@+id/header_liner"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:background="@color/backgroundColor"
-        android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
-        android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
-        android:weightSum="3">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="@dimen/appbar_elevation"
+            android:popupTheme="@anim/popup_enter"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <TextView
-            android:id="@+id/id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/name"
-            android:layout_weight=".7" />
-        <TextView
-            android:id="@+id/quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+        </android.support.v7.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/change"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/variation"
-            android:textAlignment="textEnd"
-            android:layout_gravity="end"
-            android:layout_weight="1" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/header_liner"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_below="@id/toolbar"
+            android:background="@color/backgroundColor"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
+            android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
+            android:weightSum="3">
+
+
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:text="@string/name" />
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:text="@string/variation"
+                android:textAlignment="textEnd" />
+
+        </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:alpha="0.5"
             android:layout_above="@+id/stock_list"
+            android:alpha="0.5"
             android:background="@android:color/darker_gray" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/stock_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/backgroundColor"
-        tools:listitem="@layout/stock_list_content"
-        android:layout_below="@+id/header_liner" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/stock_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/header_liner"
+            android:background="@color/backgroundColor"
+            tools:listitem="@layout/stock_list_content" />
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone" />
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
 
         <include layout="@layout/empty_state_no_connection" />
 
-    <include layout="@layout/empty_state_no_stocks" />
+        <include layout="@layout/empty_state_no_stocks" />
 
     </RelativeLayout>
-        </LinearLayout>
+
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -95,8 +97,8 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:clickable="true"
-        android:elevation="6dp"
         android:contentDescription="@string/add_stock_quote"
+        android:elevation="6dp"
         android:src="@drawable/ic_add_white_24dp"
         app:backgroundTint="@color/material_blue_500" />
 

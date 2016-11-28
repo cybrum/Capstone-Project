@@ -29,6 +29,7 @@
     <string name="symbol" translatable="false">Symbol</string>
     <string name="load_more" translatable="false">Loading More Data</string>
     <string name="read_news" translatable="false">Read News</string>
+    <string name="stock_news" translatable="false">Related News</string>
     <string name="name" translatable="false">Symbol</string>
     <string name="quantity" translatable="false">Quantity/Cost</string>
     <string name="cost" translatable="false">Purchase cost</string>

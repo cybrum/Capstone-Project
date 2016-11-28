@@ -105,10 +105,16 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.stock_detail, container, false);
         ButterKnife.bind(this, rootView);
-        mToolbar = (Toolbar)rootView.findViewById(R.id.appbar);
+        mToolbar = (Toolbar) rootView.findViewById(R.id.appbar);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(mToolbar);
+        final boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
+
+        if (!tabletSize) {
+            activity.setSupportActionBar(mToolbar);
             activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         mNewsButton = (Button) rootView.findViewById(R.id.newsBtn);
         mNewsButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,6 +8,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
+    android:background="@color/backgroundColor"
     tools:context="com.udacity.nanodegree.mystockhealth.ui.StockListActivity">
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"

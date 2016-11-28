@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,11 +49,15 @@ public class NewsActivity extends AppCompatActivity implements OnScrollListener,
         symbol = this.getIntent().getExtras().getString("Symbol");
         new NewsFetcher(symbol, na, Integer.valueOf(currentPage)).execute();
 
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.newsbar );
+        setSupportActionBar(toolbar );
+        toolbar.setTitle(R.string.stock_news);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(symbol);
         }
+
 
         newsView.setOnScrollListener(this);
         newsView.setOnItemClickListener(this);
