@@ -450,7 +450,7 @@ public class StockListActivity extends AppCompatActivity implements
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     StockEntry stockEntry = dataSnapshot.getValue(StockEntry.class);
-                    //TODO: Create an Adaptor and Sync with SQLiteDB
+                    //Create an Adaptor and Sync with SQLiteDB
                 }
 
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {}

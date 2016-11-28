@@ -96,5 +96,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="@string/read_news" />
+        android:text="@string/read_news"
+        android:contentDescription="@string/read_news"/>
 </android.support.design.widget.CoordinatorLayout>
