@@ -31,7 +31,7 @@
     <string name="read_news" translatable="false">Read News</string>
     <string name="stock_news" translatable="false">Related News</string>
     <string name="name" translatable="false">Symbol</string>
-    <string name="quantity" translatable="false">Quantity/Cost</string>
+    <string name="quantity" translatable="false">Quantity</string>
     <string name="cost" translatable="false">Purchase cost</string>
     <string name="variation" translatable="false">Variation</string>
     <string name="sign_out" translatable="false">Sign Out</string>

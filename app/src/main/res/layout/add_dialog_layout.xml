@@ -4,19 +4,22 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:hint="Symbol"
+        android:hint="@string/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/empty_view_text_color"
         android:id="@+id/addSymbol" />
     <EditText
-        android:hint="Quantity purchased"
+        android:hint="@string/quantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/empty_view_text_color"
         android:id="@+id/quatity" />
     <EditText
-        android:hint="Purchase cost"
+        android:hint="@string/cost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/empty_view_text_color"
         android:id="@+id/purchased_value" />
 
 </LinearLayout>
