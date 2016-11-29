@@ -21,10 +21,19 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
     }
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         shrunk {
             minifyEnabled true
@@ -43,14 +52,7 @@ android {
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
-    signingConfigs {
-        config {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-        }
-    }
+
 }
 
 repositories {
@@ -78,7 +80,6 @@ dependencies {
     // Firebase
     compile 'com.google.firebase:firebase-database:9.8.0'
     compile 'com.google.firebase:firebase-auth:9.8.0'
-    compile 'com.google.firebase:firebase-messaging:9.8.0'
     // FirebaseUI Database only
     //compile 'com.firebaseui:firebase-ui-database:1.0.0'
     // Single target that includes all FirebaseUI libraries

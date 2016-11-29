@@ -78,9 +78,6 @@ public class StockDetailFragment extends Fragment implements LoaderManager.Loade
     @Bind(android.R.id.tabcontent)
     View mTabContent;
 
-    public StockDetailFragment() {
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
